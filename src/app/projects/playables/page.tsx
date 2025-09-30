@@ -1,3 +1,10 @@
+import PlayablePlayer from "@/app/components/PlayablePlayer";
+
 export default function PlayablesPage() {
-  return <h1>Playables</h1>;
+  return (
+    <div>
+      <h1>Playables</h1>
+      <PlayablePlayer />
+    </div>
+  );
 }
