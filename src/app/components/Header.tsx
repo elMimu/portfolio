@@ -2,12 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Dropdown from "./Dropdown";
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
-];
+const dropDownLinks = [{ href: "/projects/playables", label: "Playables" }];
 
 export default function Header() {
   const pathname = usePathname();
@@ -16,14 +13,21 @@ export default function Header() {
       <nav className="mx-auto max-w-5xl flex border gap-6">
         <span className="">My Portfolio</span>
         <ul className="flex ml-auto gap-4">
-          {links.map((l) => {
-            const active = pathname === l.href;
-            return (
-              <li key={l.href}>
-                <Link href={l.href} className={` ${active ? "font-bold" : "font-thin"}`}>{l.label}</Link>
-              </li>
-            );
-          })}
+          <li key="/home">
+            <Link href="/" className={``}>
+              Home
+            </Link>
+          </li>
+
+          <li>
+            <Dropdown label="Projects" links={dropDownLinks} />
+          </li>
+
+          <li key="/about">
+            <Link href="/about" className={``}>
+              About
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
