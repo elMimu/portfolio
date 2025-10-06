@@ -13,9 +13,10 @@ export default function Dropdown({ label, links }: DropdownProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   return (
-    <div className="group relative border">
+    <div className="group relative text-center">
       {label}
-      <ul className="absolute hidden group-hover:block">
+      <ul className="bg-foreground absolute hidden group-hover:block">
+        {" "}
         {links.map((l) => {
           const active = pathname === l.href;
           return (
@@ -23,7 +24,9 @@ export default function Dropdown({ label, links }: DropdownProps) {
               <Link
                 href={l.href}
                 className={`${active ? "font-bold" : "font-thin"}`}
-              >{l.label}</Link>
+              >
+                {l.label}
+              </Link>
             </li>
           );
         })}

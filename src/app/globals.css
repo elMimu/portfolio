@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --hero-bg-color-primary: #03a6a1;
+  --hero-bg-color-secondary: #78B9B5;
+  --hero-font-color: #F5F1DC;
 }
 
 @theme inline {
@@ -10,6 +13,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-monoton: var(--font-monoton);
+  --font-sans-code: var(--font-sans-code);
+  --color-hero-primary: var(--hero-bg-color-primary);
+  --color-hero-secondary: var(--hero-bg-color-secondary);
+  --color-hero-font: var(--hero-font-color);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +31,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-nav > * {
+  @apply p-2;
 }

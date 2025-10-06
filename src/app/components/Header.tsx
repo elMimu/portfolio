@@ -3,29 +3,34 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Dropdown from "./Dropdown";
+import Logo from "./Logo";
 
-const dropDownLinks = [{ href: "/projects/playables", label: "Playables" }];
+const dropDownLinks = [{ href: "/projects/playables", label: "PLAYABLES" }];
 
 export default function Header() {
   const pathname = usePathname();
   return (
-    <header className="">
-      <nav className="mx-auto max-w-5xl flex border gap-6">
-        <span className="">My Portfolio</span>
-        <ul className="flex ml-auto gap-4">
+    <header>
+      <nav className="mx-auto bg-foreground text-background max-w-5xl flex gap-6">
+        <span className="flex items-center p-1">
+          <Logo />
+          <p className="p-1">PORTFOLIO</p>
+        </span>
+
+        <ul className="flex items-center ml-auto gap-4 p-2 header_nav">
           <li key="/home">
             <Link href="/" className={``}>
-              Home
+              HOME
             </Link>
           </li>
 
           <li>
-            <Dropdown label="Projects" links={dropDownLinks} />
+            <Dropdown label="PROJECTS" links={dropDownLinks} />
           </li>
 
           <li key="/about">
             <Link href="/about" className={``}>
-              About
+              ABOUT
             </Link>
           </li>
         </ul>
