@@ -4,8 +4,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --hero-bg-color-primary: #03a6a1;
-  --hero-bg-color-secondary: #78B9B5;
-  --hero-font-color: #F5F1DC;
+  --hero-bg-color-secondary: #78b9b5;
+  --hero-font-color: #f5f1dc;
 }
 
 @theme inline {
@@ -31,6 +31,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg-gradient-primary {
+  @apply bg-gradient-to-b from-hero-primary to-blue-900;
+}
+
+.btn-anim {
+  @apply relative before:content-[''] before:absolute before:inset-0 active:before:bg-black/30;
 }
 
 .header-nav > * {
