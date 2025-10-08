@@ -58,7 +58,7 @@ export default function Dropdown({ label, links, direction }: DropdownProps) {
   const [isOpen, setOpen] = useState(false);
   return (
     <span
-      className="flex relative"
+      className="flex relative justify-center"
       onClick={() => {
         setOpen(!isOpen);
       }}
@@ -66,7 +66,7 @@ export default function Dropdown({ label, links, direction }: DropdownProps) {
       {getDirectionArrow(label, direction, isOpen)}
 
       <ul
-        className={`absolute min-w-full border rounded text-center bg-foreground absolute ${handleOpenDirection(direction)} ${isOpen ? "block" : "hidden"}`}
+        className={` absolute min-w-full border rounded text-center bg-foreground absolute ${handleOpenDirection(direction)} ${isOpen ? "block" : "hidden"}`}
       >
         {" "}
         {links.map((l) => {

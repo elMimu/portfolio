@@ -4,10 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Dropdown from "./Dropdown";
 import Logo from "./Logo";
+import { useState } from "react";
 
-const dropDownLinks = [
-  { href: "/projects/playables", label: "PLAYABLES" },
-];
+const dropDownLinks = [{ href: "/projects/playables", label: "PLAYABLES" }];
 
 const getFirstRoute = (str: string) => {
   const splited_route = str.split("/");
@@ -21,17 +20,18 @@ const getFirstRoute = (str: string) => {
 
 export default function Header() {
   const pathname = usePathname();
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <header>
-      <nav className="flex mx-auto bg-foreground text-background max-w-5xl gap-6">
+      <nav className="relative flex mx-auto bg-foreground text-background max-w-5xl gap-6">
         <span className="flex items-center p-1">
           <Logo />
           <p className="p-1">PORTFOLIO</p>
         </span>
 
         {/* Desktop Menu */}
-        <ul className=" hidden md:flex items-center ml-auto gap-4 p-2">
+        <ul className="hidden md:flex items-center ml-auto gap-4 p-2">
           <li
             key="/home"
             className={`${pathname == "/" ? "font-bold" : "font-thin"}`}
@@ -42,7 +42,7 @@ export default function Header() {
           <li
             className={`${getFirstRoute(pathname) == "/projects" ? "font-bold" : ""}`}
           >
-            <Dropdown label="PROJECTS" links={dropDownLinks} direction="DOWN"/>
+            <Dropdown label="PROJECTS" links={dropDownLinks} direction="DOWN" />
           </li>
 
           <li
@@ -56,11 +56,51 @@ export default function Header() {
         </ul>
         {/*  */}
 
-        <nav className="ml-auto p-2 border">
-          <button className="">
-            <span className="material-symbols-outlined">menu</span>
-          </button>
-        </nav>
+        <button
+          className="md:hidden ml-auto p-2"
+          onClick={() => {
+            setOpen(!isOpen);
+          }}
+        >
+          <span className="material-symbols-outlined">
+            {isOpen ? "close" : "menu"}
+          </span>
+        </button>
+
+        <div
+          className={`absolute md:hidden bg-foreground w-full top-full ${!isOpen ? "hidden" : "block"}`}
+        >
+          <ul className="text-center p-2">
+            <hr className="border-gray-300" />
+            <li
+              key="/home"
+              className={`${pathname == "/" ? "font-bold" : "font-thin"}`}
+            >
+              <Link href="/">HOME</Link>
+            </li>
+            <hr className="border-gray-300" />
+
+            <li
+              className={`${getFirstRoute(pathname) == "/projects" ? "font-bold" : ""}`}
+            >
+              <Dropdown
+                label="PROJECTS"
+                links={dropDownLinks}
+                direction="DOWN"
+              />
+            </li>
+            <hr className="border-gray-300" />
+
+            <li
+              key="/about"
+              className={`${pathname == "/about" ? "font-bold" : ""}`}
+            >
+              <Link href="/about" className={``}>
+                ABOUT
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
   );
