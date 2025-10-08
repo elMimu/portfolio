@@ -7,15 +7,67 @@ import { useState } from "react";
 type DropdownProps = {
   label: string;
   links: { href: string; label: string }[];
+  direction: "RIGHT" | "LEFT" | "DOWN";
 };
 
-export default function Dropdown({ label, links }: DropdownProps) {
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+function handleOpenDirection(dir: "RIGHT" | "LEFT" | "DOWN") {
+  switch (dir) {
+    case "LEFT":
+      return "right-full top-0";
+
+    case "RIGHT":
+      return "left-full top-0";
+
+    default:
+      return "left-0 top-full";
+  }
+}
+
+function getDirectionArrow(
+  label: string,
+  dir: "RIGHT" | "LEFT" | "DOWN",
+  isOpen: boolean,
+) {
+  const icon = !isOpen
+    ? dir === "RIGHT"
+      ? "arrow_right"
+      : dir === "LEFT"
+        ? "arrow_left"
+        : "arrow_drop_down"
+    : dir === "RIGHT"
+      ? "arrow_left"
+      : dir === "LEFT"
+        ? "arrow_right"
+        : "arrow_drop_up";
+
   return (
-    <div className="group relative text-center">
-      {label}
-      <ul className="bg-foreground absolute hidden group-hover:block">
+    <>
+      {dir === "LEFT" && (
+        <span className="material-symbols-outlined">{icon}</span>
+      )}
+      <span>{label}</span>
+      {dir !== "LEFT" && (
+        <span className="material-symbols-outlined">{icon}</span>
+      )}
+    </>
+  );
+}
+
+export default function Dropdown({ label, links, direction }: DropdownProps) {
+  const pathname = usePathname();
+  const [isOpen, setOpen] = useState(false);
+  return (
+    <span
+      className="flex relative"
+      onClick={() => {
+        setOpen(!isOpen);
+      }}
+    >
+      {getDirectionArrow(label, direction, isOpen)}
+
+      <ul
+        className={`absolute min-w-full border rounded text-center bg-foreground absolute ${handleOpenDirection(direction)} ${isOpen ? "block" : "hidden"}`}
+      >
         {" "}
         {links.map((l) => {
           const active = pathname === l.href;
@@ -31,6 +83,6 @@ export default function Dropdown({ label, links }: DropdownProps) {
           );
         })}
       </ul>
-    </div>
+    </span>
   );
 }

@@ -24,7 +24,9 @@ export default function PlayablePlayer() {
 
   return (
     <div className="flex flex-wrap mt-10">
+
       <div className="mx-auto justify-items-center">
+
         {/* playable viewer section */}
         <menu className="flex justify-center pb-3 gap-1">
           <select
@@ -62,18 +64,7 @@ export default function PlayablePlayer() {
           >
             <span className="material-symbols-outlined">flip_camera_ios</span>
           </button>
-          {/* <button */}
-          {/*   title={mute ? "sound on" : "mute"} */}
-          {/*   className="flex items-center border p-1" */}
-          {/*   onClick={() => { */}
-          {/*     setMute(!mute); */}
-          {/*     toggleMute(iframeRef, mute); */}
-          {/*   }} */}
-          {/* > */}
-          {/*   <span className="material-symbols-outlined"> */}
-          {/*     {mute ? "volume_up" : "volume_off"} */}
-          {/*   </span> */}
-          {/* </button> */}
+
         </menu>
         <iframe
           ref={iframeRef}
@@ -86,7 +77,7 @@ export default function PlayablePlayer() {
       {/* / */}
 
       {/* project info section */}
-      <div className=" flex-1 min-w-1/2 px-10">
+      <div className="flex-1 min-w-1/2 px-10">
         <div className="px-2">
           <div className="mb-10">
             <h2 className="text-center mb-5 bg-gradient-primary text-white rounded-lg font-bold p-1">
