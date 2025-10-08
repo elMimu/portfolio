@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Dropdown from "./Dropdown";
 import Logo from "./Logo";
+import Accordion from "./Accordion";
 import { useState } from "react";
 
 const dropDownLinks = [{ href: "/projects/playables", label: "PLAYABLES" }];
@@ -68,32 +69,31 @@ export default function Header() {
         </button>
 
         <div
-          className={`absolute md:hidden bg-foreground w-full top-full ${!isOpen ? "hidden" : "block"}`}
+          className={`z-10 absolute md:hidden bg-foreground w-full top-full ${!isOpen ? "hidden" : "block"}`}
         >
           <ul className="text-center p-2">
             <hr className="border-gray-300" />
             <li
               key="/home"
-              className={`${pathname == "/" ? "font-bold" : "font-thin"}`}
+              className={`m-1 ${pathname == "/" ? "font-bold" : "font-thin"}`}
             >
               <Link href="/">HOME</Link>
             </li>
             <hr className="border-gray-300" />
 
             <li
-              className={`${getFirstRoute(pathname) == "/projects" ? "font-bold" : ""}`}
+              className={`m-1 ${getFirstRoute(pathname) == "/projects" ? "font-bold" : ""}`}
             >
-              <Dropdown
+              <Accordion
                 label="PROJECTS"
                 links={dropDownLinks}
-                direction="DOWN"
               />
             </li>
             <hr className="border-gray-300" />
 
             <li
               key="/about"
-              className={`${pathname == "/about" ? "font-bold" : ""}`}
+              className={`m-1 ${pathname == "/about" ? "font-bold" : ""}`}
             >
               <Link href="/about" className={``}>
                 ABOUT
