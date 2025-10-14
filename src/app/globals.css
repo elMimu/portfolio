@@ -41,6 +41,10 @@ body {
   @apply relative before:content-[''] before:absolute before:inset-0 active:before:bg-black/30;
 }
 
-.header-nav > * {
+.header-nav>* {
   @apply p-2;
+}
+
+.header-secondary {
+  @apply text-left text-xl text-white font-bold bg-gradient-to-r rounded via-hero-primary from-blue-900 mb-5  p-1 pl-2;
 }

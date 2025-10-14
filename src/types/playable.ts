@@ -5,4 +5,5 @@ export type Playable = {
   src: string;
   about: string;
   instructions?: Instruction[];
+  copyright?:string;
 };

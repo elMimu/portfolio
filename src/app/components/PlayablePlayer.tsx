@@ -39,8 +39,8 @@ export default function PlayablePlayer() {
   const [{ w, h }, setOrientation] = useState({ w: 350, h: 667 });
   const isMobile = isMobileDevice();
   return (
-    <div className="flex flex-wrap mt-10">
-      <div className="mx-auto justify-items-center">
+    <div className="flex flex-wrap mt-10 gap-2">
+      <div className="mx-auto justify-items-center mb-2">
         {/* playable viewer section */}
         <menu className="flex justify-center pb-3 gap-1">
           <select
@@ -82,42 +82,49 @@ export default function PlayablePlayer() {
         <iframe
           ref={iframeRef}
           key={loadCount}
-          className={`mx-auto mb-10`}
+          className={`mx-auto mb-2`}
           style={{ width: w, height: h }}
           src={playable ? playable.src : ""}
         />
+        {playable?.copyright ? (
+          <small>{`\u00A9 ${playable.copyright}`}</small>
+        ) : (
+          ""
+        )}
       </div>
+
       {/* / */}
 
       {/* project info section */}
-      <div className="flex-1 min-w-1/2 px-10">
+      <div className="flex-1 min-w-1/2 px-10 text-lg">
         <div className="px-2">
           <div className="mb-10">
-            <h2 className="text-center mb-5 bg-gradient-primary text-white rounded-lg font-bold p-1">
-              ABOUT THE PROJECT
-            </h2>
+            <h2 className="header-secondary">ABOUT THE PROJECT</h2>
             <p className="text-justify">{playable?.about}</p>
           </div>
-          <div className="mb-10">
-            <h2 className="text-center mb-5 bg-gradient-primary text-white rounded-lg font-bold p-1">
-              INSTRUCTIONS
-            </h2>
-            {isMobile ? (
+          {isMobile ? (
+            <div className="mb-10">
+              <h2 className="header-secondary">INSTRUCTIONS</h2>
               <ul>
                 <li>
-                  <span className="material-symbols-outlined">
-                    {getInstructionIcon("touch")}
-                  </span>
-                  <span></span>
+                      <div className="flex items-center gap-2 text-lg mb-2 ">
+                        <span className=" material-symbols-outlined">
+                          {getInstructionIcon('touch')}
+                        </span>
+                        <span className="flex-1">Use touch to play it</span>
+                      </div>
                 </li>
               </ul>
-            ) : hasInstructions(playable) ? (
+            </div>
+          ) : hasInstructions(playable) ? (
+            <div className="mb-10">
+              <h2 className="header-secondary">INSTRUCTIONS</h2>
               <ul>
                 {playable?.instructions?.map(
                   (inst: Instruction, index: number) => (
                     <li key={index}>
                       {index > 0 ? <hr className="mb-2" /> : ""}
-                      <div className="flex gap-2 text-lg mb-2">
+                      <div className="flex items-center gap-2 text-lg mb-2 ">
                         <span className=" material-symbols-outlined">
                           {getInstructionIcon(inst.type)}
                         </span>
@@ -127,10 +134,10 @@ export default function PlayablePlayer() {
                   ),
                 )}
               </ul>
-            ) : (
-              ""
-            )}
-          </div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       {/* / */}

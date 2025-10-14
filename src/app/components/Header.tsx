@@ -24,11 +24,11 @@ export default function Header() {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <header>
-      <nav className="relative flex mx-auto bg-foreground text-background max-w-5xl gap-6">
+    <header className="border bg-foreground">
+      <nav className="relative flex mx-auto  text-background max-w-5xl gap-6  ">
         <span className="flex items-center p-1">
           <Logo />
-          <p className="p-1">PORTFOLIO</p>
+          {/* <p className="p-1">PORTFOLIO</p> */}
         </span>
 
         {/* Desktop Menu */}
