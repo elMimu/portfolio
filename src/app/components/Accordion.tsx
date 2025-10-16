@@ -2,18 +2,33 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useClickOutside } from "../hooks/useOutsideClick";
 
-type AccordionProps = {
+interface AccordionProps {
   label: string;
   links: { href: string; label: string }[];
-};
+  onSelect?: () => void;
+}
 
-export default function Accordion({ label, links }: AccordionProps) {
+export default function Accordion({ label, links, onSelect }: AccordionProps) {
   const pathname = usePathname();
   const [isOpen, setOpen] = useState(false);
+  const accordionRef = useRef(null);
+
+  useClickOutside(accordionRef, () => setOpen(false));
+
+  const handleSelection = () => {
+    setOpen(false);
+    if (!onSelect) {
+      return;
+    }
+    onSelect();
+  };
+
   return (
     <div
+      ref={accordionRef}
       className=""
       onClick={() => {
         setOpen(!isOpen);
@@ -32,7 +47,12 @@ export default function Accordion({ label, links }: AccordionProps) {
         {links.map((l) => {
           const active = pathname === l.href;
           return (
-            <li key={l.href}>
+            <li
+              key={l.href}
+              onClick={() => {
+                handleSelection();
+              }}
+            >
               <Link
                 href={l.href}
                 className={`text-foreground ${active ? "font-bold" : "font-thin"}`}

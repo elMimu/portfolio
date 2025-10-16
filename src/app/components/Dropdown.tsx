@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useClickOutside } from "../hooks/useOutsideClick";
 
 type DropdownProps = {
   label: string;
@@ -56,8 +57,13 @@ function getDirectionArrow(
 export default function Dropdown({ label, links, direction }: DropdownProps) {
   const pathname = usePathname();
   const [isOpen, setOpen] = useState(false);
+  const dropDownRef = useRef(null);
+
+  useClickOutside(dropDownRef, () => setOpen(false));
+
   return (
     <span
+      ref={dropDownRef}
       className="flex relative justify-center"
       onClick={() => {
         setOpen(!isOpen);
@@ -72,7 +78,7 @@ export default function Dropdown({ label, links, direction }: DropdownProps) {
         {links.map((l) => {
           const active = pathname === l.href;
           return (
-            <li key={l.href}>
+            <li key={l.href} onClick={() => setOpen(false)}>
               <Link
                 href={l.href}
                 className={`${active ? "font-bold" : "font-thin"}`}

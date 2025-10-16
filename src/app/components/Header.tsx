@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Dropdown from "./Dropdown";
-import Logo from "./Logo";
 import Accordion from "./Accordion";
 import { useState } from "react";
 
@@ -27,8 +27,13 @@ export default function Header() {
     <header className="border bg-foreground">
       <nav className="relative flex mx-auto  text-background max-w-5xl gap-6  ">
         <span className="flex items-center p-1">
-          <Logo />
-          {/* <p className="p-1">PORTFOLIO</p> */}
+          <Image
+            width={60}
+            height={40}
+            src="/logo-white.svg"
+            alt="logo"
+            className=""
+          />
         </span>
 
         {/* Desktop Menu */}
@@ -74,24 +79,27 @@ export default function Header() {
           <ul className="text-center p-2">
             <hr className="border-gray-300" />
             <li
+              onClick={() => setOpen(false)}
               key="/home"
               className={`m-1 ${pathname == "/" ? "font-bold" : "font-thin"}`}
             >
               <Link href="/">HOME</Link>
             </li>
             <hr className="border-gray-300" />
-
             <li
               className={`m-1 ${getFirstRoute(pathname) == "/projects" ? "font-bold" : ""}`}
             >
               <Accordion
                 label="PROJECTS"
+                onSelect={() => {
+                  setOpen(false);
+                }}
                 links={dropDownLinks}
               />
             </li>
             <hr className="border-gray-300" />
-
             <li
+              onClick={() => setOpen(false)}
               key="/about"
               className={`m-1 ${pathname == "/about" ? "font-bold" : ""}`}
             >
