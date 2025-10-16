@@ -54,6 +54,23 @@ function getDirectionArrow(
   );
 }
 
+function handleAnimation(dir: "RIGHT" | "LEFT" | "DOWN", isOpen: boolean) {
+  switch (dir) {
+    case "DOWN":
+      return isOpen
+        ? "origin-top scale-y-[100%] block"
+        : "origin-top scale-y-0";
+    case "LEFT":
+      return isOpen
+        ? "origin-right scale-x-[100%] block"
+        : "origin-right scale-x-0";
+    case "RIGHT":
+      return isOpen
+        ? "origin-left scale-x-[100%] block"
+        : "origin-left scale-x-0";
+  }
+}
+
 export default function Dropdown({ label, links, direction }: DropdownProps) {
   const pathname = usePathname();
   const [isOpen, setOpen] = useState(false);
@@ -72,9 +89,8 @@ export default function Dropdown({ label, links, direction }: DropdownProps) {
       {getDirectionArrow(label, direction, isOpen)}
 
       <ul
-        className={` absolute min-w-full border rounded text-center bg-foreground absolute ${handleOpenDirection(direction)} ${isOpen ? "block" : "hidden"}`}
+        className={`absolute min-w-full border rounded text-center bg-foreground absolute transition duration-100 ${handleOpenDirection(direction)} ${handleAnimation(direction, isOpen)}`}
       >
-        {" "}
         {links.map((l) => {
           const active = pathname === l.href;
           return (

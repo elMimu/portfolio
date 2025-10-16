@@ -29,20 +29,21 @@ export default function Accordion({ label, links, onSelect }: AccordionProps) {
   return (
     <div
       ref={accordionRef}
-      className=""
+      className={`overflow-hidden transition-all duration-300 ease-in-out
+  ${isOpen ? "max-h-20" : "max-h-5"}`}
       onClick={() => {
         setOpen(!isOpen);
       }}
     >
       <div className="flex">
         <div className="flex-1">{label}</div>
-        <span className="material-symbols-outlined">
+        <span className="material-symbols-outlined ">
           {isOpen ? "arrow_drop_up" : "arrow_drop_down"}
         </span>
       </div>
 
       <ul
-        className={`min-w-full rounded text-black bg-background ${isOpen ? "origin-top scale-y-0 scale-y-100 transition-transform duration-5000 block" : "hidden"}`}
+        className={`min-w-full rounded text-black bg-background`}
       >
         {links.map((l) => {
           const active = pathname === l.href;
