@@ -1,4 +1,4 @@
-import PlayablePlayer from "@/app/components/PlayablePlayer";
+import PlayablePlayer from "@/app/[locale]/components/PlayablePlayer";
 
 export default function PlayablesPage() {
   return (

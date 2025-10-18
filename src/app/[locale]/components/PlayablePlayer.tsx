@@ -10,6 +10,7 @@ import playable_list from "@/data/playable_list.json";
 import { useRef, useState } from "react";
 import { isMobileDevice } from "@/utils/isMobileDevice";
 import { Instruction } from "@/types/Instruction";
+import { useTranslations } from "next-intl";
 
 let playable: Playable | null = (() => {
   if (playable_list.length > 0) {
@@ -38,6 +39,9 @@ export default function PlayablePlayer() {
   const [loadCount, setLoadCount] = useState(0);
   const [{ w, h }, setOrientation] = useState({ w: 350, h: 667 });
   const isMobile = isMobileDevice();
+
+  const t = useTranslations("Playables");
+
   return (
     <div className="flex flex-wrap mt-10 gap-2">
       <div className="mx-auto justify-items-center mb-2">
@@ -100,19 +104,23 @@ export default function PlayablePlayer() {
         <div className="px-2">
           <div className="mb-10">
             <h2 className="header-secondary">ABOUT THE PROJECT</h2>
-            <p className="text-justify">{playable?.about}</p>
+            <p className="text-justify">
+              {t(`Descriptions.${playable?.name}`)}
+            </p>
           </div>
           {isMobile ? (
             <div className="mb-10">
               <h2 className="header-secondary">INSTRUCTIONS</h2>
               <ul>
                 <li>
-                      <div className="flex items-center gap-2 text-lg mb-2 ">
-                        <span className=" material-symbols-outlined">
-                          {getInstructionIcon('touch')}
-                        </span>
-                        <span className="flex-1">Use touch to play it</span>
-                      </div>
+                  <div className="flex items-center gap-2 text-lg mb-2 ">
+                    <span className=" material-symbols-outlined">
+                      {getInstructionIcon("touch")}
+                    </span>
+                    <span className="flex-1">
+                      {t("Instructions.TouchToPlay")}
+                    </span>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -128,7 +136,9 @@ export default function PlayablePlayer() {
                         <span className=" material-symbols-outlined">
                           {getInstructionIcon(inst.type)}
                         </span>
-                        <span className="flex-1">{inst.description}</span>
+                        <span className="flex-1">
+                          {t(`Instructions.${inst.description}`)}
+                        </span>
                       </div>
                     </li>
                   ),

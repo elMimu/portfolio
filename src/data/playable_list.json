@@ -2,16 +2,12 @@
   {
     "name": "War Machines - Ataque Cidade",
     "src": "/playables/wm_ataque_cidade/index.html",
-    "about": "The idea behind that project was to remake a classic playable. The code base needed a little bit of refactoring since it was made way before the team change the development stack and begin to use Typescript instead of Javascript. I believe it was my first time using the framework particle system and thank to my peers help it turned out that good. Adding the sound effects was  What start as just a assets change became a really fun and learn experience. ",
-    "instructions": [
-      { "type": "mouse", "description": "Use the mouse to play" }
-    ],
+    "instructions": [{ "type": "mouse", "description": "MouseToPlay" }],
     "copyright": "Wildlife Studios"
   },
   {
     "name": "AFK Soccer - Chute Forte",
     "src": "/playables/afk_soccer_chute_forte/index.html",
-    "about": "This was great! Since it was one of the new games projects I had to built this one from ground zero. I had to code the UI so It wraps the overflow text regardless of the language and synchronize what triggers changes on the animation. Adjust the circle when the ball is dragged under the correct space took a little creativity. The challenge part was the collider. Needed a lot of thought, help and creativity to fix sticking and tunelling bugs. The work needed to fix these bugs was a great learning experience. I had to study about colliding in game development and it help me a lot in future projects. This project was one of the most important ones during my internship period.",
     "copyright": "Wildlife Studios"
   }
 ]

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import { useClickOutside } from "../hooks/useOutsideClick";
+import { useClickOutside } from "@/app/hooks/useOutsideClick";
 
 type DropdownProps = {
   label: string;

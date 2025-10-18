@@ -11,10 +11,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-monoton: var(--font-monoton);
-  --font-sans-code: var(--font-sans-code);
   --color-hero-primary: var(--hero-bg-color-primary);
   --color-hero-secondary: var(--hero-bg-color-secondary);
   --color-hero-font: var(--hero-font-color);

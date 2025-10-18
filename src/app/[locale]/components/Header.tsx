@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Dropdown from "./Dropdown";
 import Accordion from "./Accordion";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 const dropDownLinks = [{ href: "/projects/playables", label: "PLAYABLES" }];
 
@@ -22,13 +23,14 @@ const getFirstRoute = (str: string) => {
 export default function Header() {
   const pathname = usePathname();
   const [isOpen, setOpen] = useState(false);
+  const t = useTranslations(`Header.Nav`);
 
   return (
     <header className="border bg-foreground">
       <nav className="relative flex mx-auto  text-background max-w-5xl gap-6  ">
         <span className="flex items-center p-1">
           <Image
-            width={60}
+            width={40}
             height={40}
             src="/logo-white.svg"
             alt="logo"
@@ -42,13 +44,13 @@ export default function Header() {
             key="/home"
             className={`${pathname == "/" ? "font-bold" : "font-thin"}`}
           >
-            <Link href="/">HOME</Link>
+            <Link href="/">{t("Home").toUpperCase()}</Link>
           </li>
 
           <li
             className={`${getFirstRoute(pathname) == "/projects" ? "font-bold" : ""}`}
           >
-            <Dropdown label="PROJECTS" links={dropDownLinks} direction="DOWN" />
+            <Dropdown label={t("Projects").toUpperCase()} links={dropDownLinks} direction="DOWN" />
           </li>
 
           <li
@@ -56,7 +58,7 @@ export default function Header() {
             className={`${pathname == "/about" ? "font-bold" : ""}`}
           >
             <Link href="/about" className={``}>
-              ABOUT
+              {t("About").toUpperCase()}
             </Link>
           </li>
         </ul>
@@ -83,14 +85,14 @@ export default function Header() {
               key="/home"
               className={`m-1 ${pathname == "/" ? "font-bold" : "font-thin"}`}
             >
-              <Link href="/">HOME</Link>
+              <Link href="/">{t("Home").toUpperCase()}</Link>
             </li>
             <hr className="border-gray-300" />
             <li
               className={`m-1 ${getFirstRoute(pathname) == "/projects" ? "font-bold" : ""}`}
             >
               <Accordion
-                label="PROJECTS"
+                label={t("Projects").toUpperCase()}
                 onSelect={() => {
                   setOpen(false);
                 }}
@@ -104,7 +106,7 @@ export default function Header() {
               className={`m-1 ${pathname == "/about" ? "font-bold" : ""}`}
             >
               <Link href="/about" className={``}>
-                ABOUT
+                {t("About").toUpperCase()}
               </Link>
             </li>
           </ul>

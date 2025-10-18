@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import { useClickOutside } from "../hooks/useOutsideClick";
+import { useClickOutside } from "@/app/hooks/useOutsideClick";
 
 interface AccordionProps {
   label: string;
@@ -42,9 +42,7 @@ export default function Accordion({ label, links, onSelect }: AccordionProps) {
         </span>
       </div>
 
-      <ul
-        className={`min-w-full rounded text-black bg-background`}
-      >
+      <ul className={`min-w-full rounded text-black bg-background`}>
         {links.map((l) => {
           const active = pathname === l.href;
           return (
