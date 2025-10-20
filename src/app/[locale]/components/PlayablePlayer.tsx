@@ -103,14 +103,14 @@ export default function PlayablePlayer() {
       <div className="flex-1 min-w-1/2 px-10 text-lg">
         <div className="px-2">
           <div className="mb-10">
-            <h2 className="header-secondary">ABOUT THE PROJECT</h2>
+            <h2 className="header-secondary">{t("Title1").toUpperCase()}</h2>
             <p className="text-justify">
               {t(`Descriptions.${playable?.name}`)}
             </p>
           </div>
           {isMobile ? (
             <div className="mb-10">
-              <h2 className="header-secondary">INSTRUCTIONS</h2>
+              <h2 className="header-secondary">{t("Title2").toUpperCase()}</h2>
               <ul>
                 <li>
                   <div className="flex items-center gap-2 text-lg mb-2 ">
@@ -126,7 +126,7 @@ export default function PlayablePlayer() {
             </div>
           ) : hasInstructions(playable) ? (
             <div className="mb-10">
-              <h2 className="header-secondary">INSTRUCTIONS</h2>
+              <h2 className="header-secondary">{t("Title2").toUpperCase()}</h2>
               <ul>
                 {playable?.instructions?.map(
                   (inst: Instruction, index: number) => (

@@ -81,7 +81,7 @@ export default function Dropdown({ label, links, direction }: DropdownProps) {
   return (
     <span
       ref={dropDownRef}
-      className="flex relative justify-center"
+      className="flex relative justify-center hover:cursor-pointer"
       onClick={() => {
         setOpen(!isOpen);
       }}

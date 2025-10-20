@@ -11,8 +11,18 @@
     "Title2": "Desenvolvedor de Playable",
     "Subtitle": "Aqui você encontrará meus projetos e seus resultados. Espero que eles transmitam minhas habilidades como Engenheiro de Software e Desenvolvedor de Playables."
   },
-  "About": "Hello! I’m a software developer whose career path led me to the world of playables — interactive and playable ads. Although it may seem like a very specific field, this experience has given me a solid technical foundation and strong autonomy to do what I love most: creating digital solutions that deliver value and satisfaction, whether through efficiency or entertainment.",
+  "About": {
+    "Title": "Sobre",
+    "Paragraph1": "Sou desenvolvedor de software e minha trajetória profissional me levou ao universo dos playables, anúncios interativos e jogáveis. Embora pareça um campo bastante específico, essa experiência me proporcionou uma base técnica sólida para fazer o que mais gosto: criar soluções digitais que entreguem valor e satisfação, seja pela eficiência ou pelo entretenimento.",
+    "Paragraph2": "Utilizo tecnologias como JavaScript, TypeScript, C++, Python, HTML, CSS, SASS, Tailwind, React, Node.js, Next.js, SQL, NoSQL, Webpack e WebGL.",
+    "Paragraph3": " Acredito que o software representa um novo passo na evolução de como os seres humanos realizam tarefas, assim como foram as ferramentas de pedra lascada, o fogo e as máquinas a vapor em seus tempos. É um momento histórico do qual tenho orgulho de fazer parte ativamente. Por isso, busco ser criativo e observador para entender necessidades reais e criar produtos que realmente as resolvam. ",
+    "Paragraph4": "Também tenho grande interesse pelo desenvolvimento de jogos, especialmente retrô games, pela engenhosidade com que programadores de outras épocas criaram experiências incríveis com recursos limitados.",
+    "Paragraph5": " Estou sempre aberto a novos projetos e colaborações. Sinta-se à vontade para entrar em contato. Mal posso esperar para dar vida a novas ideias e ajudar equipes a se moverem mais rápido com ferramentas incríveis. ",
+    "Contact information": "Informações de contato"
+  },
   "Playables": {
+    "Title1": "Sobre o projeto",
+    "Title2": "Instruções",
     "Descriptions": {
       "War Machines - Ataque Cidade": "O objetivo deste projeto foi refazer um Playable clássico. A base de código precisou de uma refatoração, já que havia sido criada antes da equipe mudar a stack de desenvolvimento para TypeScript em vez de JavaScript. Foi a minha primeira vez utilizando o sistema de partículas do framework, e graças à ajuda dos meus colegas, o efeito de fumaça no prédio no final da rua principal ficou excelente. O que começou como uma simples troca de assets acabou se tornando uma experiência de aprendizado divertida e gratificante.",
       "AFK Soccer - Chute Forte": "Esse projeto foi uma experiência incrível! Como era um dos novos jogos, precisei construí-lo totalmente do zero. Desenvolvi a interface para que o texto fosse ajustado corretamente em qualquer idioma e sincronizado com as animações. Ajustar o círculo quando a bola era arrastada para o espaço correto exigiu um pouco de criatividade. A parte mais desafiadora foi o colisor — foi necessário muito raciocínio, colaboração e criatividade para corrigir os bugs de “sticking” e “tunneling”. Resolver esses problemas se tornou um ótimo aprendizado, pois precisei estudar sobre colisões em desenvolvimento de jogos, o que me ajudou bastante em projetos futuros. Esse foi um dos projetos mais importantes em que trabalhei durante meu período de estágio."

@@ -8,6 +8,7 @@
   {
     "name": "AFK Soccer - Chute Forte",
     "src": "/playables/afk_soccer_chute_forte/index.html",
+    "instructions": [{ "type": "mouse", "description": "MouseToPlay" }],
     "copyright": "Wildlife Studios"
   }
 ]

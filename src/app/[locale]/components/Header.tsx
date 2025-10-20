@@ -12,12 +12,12 @@ const dropDownLinks = [{ href: "/projects/playables", label: "PLAYABLES" }];
 
 const getFirstRoute = (str: string) => {
   const splited_route = str.split("/");
-
-  if (splited_route.length < 1) {
-    return "";
+  if (splited_route.length < 3) {
+    if (splited_route.length < 2) return "";
+    return "/";
   }
 
-  return "/" + splited_route[1];
+  return "/" + splited_route[2];
 };
 
 export default function Header() {
@@ -30,8 +30,8 @@ export default function Header() {
       <nav className="relative flex mx-auto  text-background max-w-5xl gap-6  ">
         <span className="flex items-center p-1">
           <Image
-            width={40}
-            height={40}
+            width={60}
+            height={60}
             src="/logo-white.svg"
             alt="logo"
             className=""
@@ -42,7 +42,7 @@ export default function Header() {
         <ul className="hidden md:flex items-center ml-auto gap-4 p-2">
           <li
             key="/home"
-            className={`${pathname == "/" ? "font-bold" : "font-thin"}`}
+            className={`${getFirstRoute(pathname) == "/" ? "font-bold" : "font-thin"}`}
           >
             <Link href="/">{t("Home").toUpperCase()}</Link>
           </li>
@@ -50,12 +50,16 @@ export default function Header() {
           <li
             className={`${getFirstRoute(pathname) == "/projects" ? "font-bold" : ""}`}
           >
-            <Dropdown label={t("Projects").toUpperCase()} links={dropDownLinks} direction="DOWN" />
+            <Dropdown
+              label={t("Projects").toUpperCase()}
+              links={dropDownLinks}
+              direction="DOWN"
+            />
           </li>
 
           <li
             key="/about"
-            className={`${pathname == "/about" ? "font-bold" : ""}`}
+            className={`${getFirstRoute(pathname) == "/about" ? "font-bold" : ""}`}
           >
             <Link href="/about" className={``}>
               {t("About").toUpperCase()}
