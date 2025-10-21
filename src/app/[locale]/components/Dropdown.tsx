@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import { useClickOutside } from "../hooks/useOutsideClick";
+import { useClickOutside } from "@/app/hooks/useOutsideClick";
 
 type DropdownProps = {
   label: string;
@@ -81,7 +81,7 @@ export default function Dropdown({ label, links, direction }: DropdownProps) {
   return (
     <span
       ref={dropDownRef}
-      className="flex relative justify-center"
+      className="flex relative justify-center hover:cursor-pointer"
       onClick={() => {
         setOpen(!isOpen);
       }}
