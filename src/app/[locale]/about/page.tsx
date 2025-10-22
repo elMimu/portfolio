@@ -26,7 +26,7 @@ export default function AboutPage() {
           </h2>
 
           <nav className="flex justify-center gap-2">
-            <a href="#">
+            <a href="https://github.com/elMimu">
               <Image
                 width={30}
                 height={30}
@@ -34,7 +34,7 @@ export default function AboutPage() {
                 alt="GitHub"
               />
             </a>
-            <a href="#">
+            <a href="https://www.linkedin.com/in/michel-munhoz-102110217/">
               <Image
                 width={30}
                 height={30}

@@ -11,6 +11,7 @@ import { useRef, useState } from "react";
 import { isMobileDevice } from "@/utils/isMobileDevice";
 import { Instruction } from "@/types/Instruction";
 import { useTranslations } from "next-intl";
+import { useForwardKeysToIframe } from "@/app/hooks/useForwardKeysToIframe";
 
 let playable: Playable | null = (() => {
   if (playable_list.length > 0) {
@@ -41,6 +42,8 @@ export default function PlayablePlayer() {
   const isMobile = isMobileDevice();
 
   const t = useTranslations("Playables");
+
+  useForwardKeysToIframe(iframeRef);
 
   return (
     <div className="flex flex-wrap mt-10 gap-2">
