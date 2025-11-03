@@ -1,4 +1,3 @@
-import { textTemplate } from "@/utils/textTemplate";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 

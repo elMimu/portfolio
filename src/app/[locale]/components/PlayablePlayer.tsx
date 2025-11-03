@@ -8,7 +8,6 @@ import { Playable } from "@/types/playable";
 import playable_list from "@/data/playable_list.json";
 
 import { useRef, useState } from "react";
-import { isMobileDevice } from "@/utils/isMobileDevice";
 import { Instruction } from "@/types/Instruction";
 import { useTranslations } from "next-intl";
 import { useForwardKeysToIframe } from "@/app/hooks/useForwardKeysToIframe";
