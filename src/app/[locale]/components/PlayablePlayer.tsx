@@ -12,6 +12,7 @@ import { isMobileDevice } from "@/utils/isMobileDevice";
 import { Instruction } from "@/types/Instruction";
 import { useTranslations } from "next-intl";
 import { useForwardKeysToIframe } from "@/app/hooks/useForwardKeysToIframe";
+import { useIsMobile } from "@/app/hooks/useIsMobile";
 
 let playable: Playable | null = (() => {
   if (playable_list.length > 0) {
@@ -39,7 +40,7 @@ export default function PlayablePlayer() {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [loadCount, setLoadCount] = useState(0);
   const [{ w, h }, setOrientation] = useState({ w: 350, h: 667 });
-  const isMobile = isMobileDevice();
+  const isMobile = useIsMobile();
 
   const t = useTranslations("Playables");
 
